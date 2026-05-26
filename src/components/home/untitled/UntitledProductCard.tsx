@@ -54,7 +54,7 @@ export function UntitledProductCard({ product, onAddToCart, onWishlist }: Untitl
           <p className="text-lg font-semibold text-slate-900 dark:text-slate-100">{formatCurrency(product.proPrice)}</p>
           <div className="flex items-center gap-2">
             <Button
-              size="icon-sm"
+              size="icon"
               variant="outline"
               onClick={() => onWishlist(product.proId)}
               aria-label={`Add ${product.proName} to wishlist`}

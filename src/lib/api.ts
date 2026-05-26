@@ -2,7 +2,7 @@ const BASE_URL =
   process.env.NEXT_PUBLIC_API_BASE_URL ||
   "https://demoprojectspring-production.up.railway.app/api/v1";
 
-// ─── Swagger-aligned types ────────────────────────────────────────────────────
+// --- Swagger-aligned types ----------------------------------------------------
 
 export interface Product {
   proId: number;
@@ -159,7 +159,7 @@ export interface AuthCredentials {
 
 export type GenericApiResponse = Record<string, unknown>;
 
-// ─── Products ─────────────────────────────────────────────────────────────────
+// --- Products -----------------------------------------------------------------
 
 export async function getProducts(): Promise<Product[]> {
   const res = await fetch(`${BASE_URL}/products`);
@@ -173,7 +173,7 @@ export async function getProductById(id: number): Promise<Product> {
   return res.json();
 }
 
-// ─── Popularity ───────────────────────────────────────────────────────────────
+// --- Popularity ---------------------------------------------------------------
 
 export async function getTrendingProducts(limit = 10): Promise<Product[]> {
   const res = await fetch(`${BASE_URL}/products/popular/trending?limit=${limit}`);
@@ -183,7 +183,7 @@ export async function getTrendingProducts(limit = 10): Promise<Product[]> {
   return Array.isArray(data) ? data : data.content || [];
 }
 
-// ─── Categories ───────────────────────────────────────────────────────────────
+// --- Categories ---------------------------------------------------------------
 
 export async function getCategories(): Promise<CategoryDTO[]> {
   const res = await fetch(`${BASE_URL}/categories`);
@@ -191,7 +191,7 @@ export async function getCategories(): Promise<CategoryDTO[]> {
   return res.json();
 }
 
-// ─── Search ───────────────────────────────────────────────────────────────────
+// --- Search -------------------------------------------------------------------
 
 export async function searchProducts(keyword: string): Promise<Product[]> {
   const res = await fetch(`${BASE_URL}/products/search?keyword=${encodeURIComponent(keyword)}`);
@@ -199,7 +199,7 @@ export async function searchProducts(keyword: string): Promise<Product[]> {
   return res.json();
 }
 
-// ─── Auth ─────────────────────────────────────────────────────────────────────
+// --- Auth ---------------------------------------------------------------------
 
 export async function login(credentials: AuthCredentials): Promise<GenericApiResponse> {
   const res = await fetch(`${BASE_URL}/login`, {
@@ -212,7 +212,7 @@ export async function login(credentials: AuthCredentials): Promise<GenericApiRes
 }
 
 
-// ─── Orders ───────────────────────────────────────────────────────────────────
+// --- Orders -------------------------------------------------------------------
 
 export async function updateOrderStatus(
   orderId: number, 
@@ -237,7 +237,7 @@ export async function updateOrderStatus(
   return res.json();
 }
 
-// ─── Addresses ────────────────────────────────────────────────────────────────
+// --- Addresses ----------------------------------------------------------------
 
 export async function addAddress(
   data: AddressDto,
@@ -261,7 +261,7 @@ export async function addAddress(
   return res.json();
 }
 
-// ─── Coupons ──────────────────────────────────────────────────────────────────
+// --- Coupons ------------------------------------------------------------------
 
 export async function toggleCoupon(
   couponId: number,
@@ -284,7 +284,7 @@ export async function toggleCoupon(
   return res.json();
 }
 
-// ─── Order Tracking ──────────────────────────────────────────────────────────
+// --- Order Tracking ----------------------------------------------------------
 
 export async function trackOrder(
   orderId: number,

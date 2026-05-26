@@ -37,7 +37,7 @@ function pickStringArray(res: unknown): string[] {
 export const productApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
 
-    // ── Products ────────────────────────────────────────────────────────────
+    // -- Products ------------------------------------------------------------
     getProducts: builder.query<Product[], void>({
       query: () => "/products",
       transformResponse: (res: unknown) => pickProductArray(res),
@@ -48,13 +48,13 @@ export const productApi = baseApi.injectEndpoints({
       query: (id) => `/products/${id}`,
       providesTags: (result, error, id) => [{ type: "Product", id }],
     }),
-    // ── New Arrivals ─────────────────────────────────────────────────────────
+    // -- New Arrivals ---------------------------------------------------------
     getNewArrivals: builder.query<Product[], number | void>({
       query: (limit = 10) => `/products/new-arrivals${limit ? `?limit=${limit}` : ""}`,
       transformResponse: (res: unknown) => pickProductArray(res),
       providesTags: ["Product"],
     }),
-    // ── Popularity / Trending ───────────────────────────────────────────────
+    // -- Popularity / Trending -----------------------------------------------
     getTrendingProducts: builder.query<Product[], number | void>({
       query: (limit = 10) => `/products/popular/trending?limit=${limit}`,
       transformResponse: (res: unknown) => pickProductArray(res),
@@ -104,13 +104,13 @@ export const productApi = baseApi.injectEndpoints({
       transformResponse: (res: unknown) => pickProductArray(res),
       providesTags: ["Product"],
     }),
-    // ── Categories ──────────────────────────────────────────────────────────
+    // -- Categories ----------------------------------------------------------
     getCategories: builder.query<CategoryDTO[], void>({
       query: () => "/categories",
       providesTags: ["Category"],
     }),
 
-    // ── Search ──────────────────────────────────────────────────────────────
+    // -- Search --------------------------------------------------------------
     searchProducts: builder.query<Product[], string>({
       query: (keyword) =>
         `/products/search?keyword=${encodeURIComponent(keyword)}`,
@@ -141,7 +141,7 @@ export const productApi = baseApi.injectEndpoints({
       transformResponse: (res: unknown) => pickStringArray(res),
     }),
 
-    // ── Wishlist ────────────────────────────────────────────────────────────
+    // -- Wishlist ------------------------------------------------------------
     getWishlist: builder.query<GenericApiResponse, void>({
       query: () => "/wishlist",
       providesTags: ["Wishlist"],
@@ -176,7 +176,7 @@ export const productApi = baseApi.injectEndpoints({
       invalidatesTags: ["Wishlist"],
     }),
 
-    // ── Cart ────────────────────────────────────────────────────────────────
+    // -- Cart ----------------------------------------------------------------
     getCart: builder.query<CartResponseDto, number>({
       query: (userId) => `/cart/${userId}`,
       providesTags: ["Cart"],
@@ -222,7 +222,7 @@ export const productApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ["Cart"],
     }),
-    // ── Orders ──────────────────────────────────────────────────────────────
+    // -- Orders --------------------------------------------------------------
     getOrderHistory: builder.query<OrderResponseDto[], number>({
       query: (userId) => `/orders/${userId}/history`,
       providesTags: ["Orders"],
@@ -239,12 +239,12 @@ export const productApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ["Orders", "Cart"],
     }),
-    // ── Coupons (user-facing) ────────────────────────────────────────────────
+    // -- Coupons (user-facing) ------------------------------------------------
     validateCoupon: builder.query<{ valid: boolean; discount?: number; message?: string }, string>({
       query: (code) => `/coupons/validate?code=${encodeURIComponent(code)}`,
     }),
 
-    // ── Reviews ─────────────────────────────────────────────────────────────
+    // -- Reviews -------------------------------------------------------------
     /** GET /api/v1/reviews/product/{productId} */
     getProductReviews: builder.query<ReviewResponseDto[], number>({
       query: (productId) => `/reviews/product/${productId}`,

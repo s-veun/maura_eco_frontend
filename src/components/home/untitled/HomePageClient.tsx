@@ -44,7 +44,7 @@ const floatLoop = {
   transition: { duration: 4.2, repeat: Infinity, ease: "easeInOut" as const },
 };
 
-/* ── Static data ──────────────────────────────────────────────────── */
+/* -- Static data ---------------------------------------------------- */
 const services = [
   { icon: Truck,       title: "Free Delivery",     description: "Free shipping on all orders over $150. Fast and reliable.", color: "text-violet-600 dark:text-violet-400",  bg: "bg-violet-50 dark:bg-violet-500/10" },
   { icon: ShieldCheck, title: "Secure Payment",    description: "Your transactions are protected with bank-grade encryption.", color: "text-emerald-600 dark:text-emerald-400", bg: "bg-emerald-50 dark:bg-emerald-500/10" },
@@ -63,7 +63,7 @@ const testimonials = [
   { quote: "Smooth ordering experience, transparent tracking, and beautiful products. Highly recommend TableEco.", name: "Priya Nair",    title: "Hotel Interior Designer", rating: 4 },
 ];
 
-/* ── Product skeleton ─────────────────────────────────────────────── */
+/* -- Product skeleton ----------------------------------------------- */
 function ProductSkeleton() {
   return (
     <div className="overflow-hidden rounded-[5px] bg-slate-100/80 dark:bg-slate-900/70">
@@ -81,7 +81,7 @@ function ProductSkeleton() {
   );
 }
 
-/* ── Section header ───────────────────────────────────────────────── */
+/* -- Section header ------------------------------------------------- */
 function SectionHeader({
   eyebrow,
   title,
@@ -105,7 +105,7 @@ function SectionHeader({
   );
 }
 
-/* ── Product card ─────────────────────────────────────────────────── */
+/* -- Product card --------------------------------------------------- */
 function ProductCard({
   product,
   onAddToCart,
@@ -249,14 +249,14 @@ export function HomePageClient() {
       <Header />
 
       <main>
-        {/* ══════════════════════════════════════
+        {/* ======================================
             HERO — Swiper banner
-        ══════════════════════════════════════ */}
+        ====================================== */}
         <HeroSwiper />
 
-        {/* ══════════════════════════════════════
+        {/* ======================================
             CATEGORY ROW
-        ══════════════════════════════════════ */}
+        ====================================== */}
         <section className="bg-slate-50 dark:bg-slate-900/40">
           <div className="max-w-7xl mx-auto px-4 md:px-6">
             {landing.categories.isLoading ? (
@@ -303,9 +303,9 @@ export function HomePageClient() {
           </div>
         </section>
 
-        {/* ══════════════════════════════════════
+        {/* ======================================
             NEW ARRIVALS
-        ══════════════════════════════════════ */}
+        ====================================== */}
         <NewArrivalsSection
           products={newArrivals}
           isLoading={landing.newArrivals.isLoading}
@@ -314,9 +314,9 @@ export function HomePageClient() {
           onQuickView={setQuickViewProduct}
         />
 
-        {/* ══════════════════════════════════════
+        {/* ======================================
             FEATURED PRODUCTS
-        ══════════════════════════════════════ */}
+        ====================================== */}
         <section id="featured" className="max-w-7xl mx-auto px-4 md:px-6 py-16 space-y-8">
           <SectionHeader
             eyebrow="Featured products"
@@ -348,9 +348,9 @@ export function HomePageClient() {
           </motion.div>
         </section>
 
-        {/* ══════════════════════════════════════
+        {/* ======================================
             CATEGORIES
-        ══════════════════════════════════════ */}
+        ====================================== */}
         <section id="categories" className="bg-slate-50 dark:bg-slate-900/30">
           <div className="max-w-7xl mx-auto px-4 md:px-6 py-16 space-y-8">
             <motion.div {...fadeUp} className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
@@ -530,9 +530,9 @@ export function HomePageClient() {
           </div>
         </section>
 
-        {/* ══════════════════════════════════════
+        {/* ======================================
             PRODUCT TABS
-        ══════════════════════════════════════ */}
+        ====================================== */}
         <ProductTabsSection
           trending={popularProducts}
           topRated={topRated}
@@ -544,9 +544,9 @@ export function HomePageClient() {
           onQuickView={setQuickViewProduct}
         />
 
-        {/* ══════════════════════════════════════
+        {/* ======================================
             PROMOTIONAL BANNER
-        ══════════════════════════════════════ */}
+        ====================================== */}
         <section className="max-w-7xl mx-auto px-4 md:px-6 py-16">
           <motion.div
             {...fadeUp}
@@ -608,9 +608,9 @@ export function HomePageClient() {
           </motion.div>
         </section>
 
-        {/* ══════════════════════════════════════
+        {/* ======================================
             MOST VIEWED
-        ══════════════════════════════════════ */}
+        ====================================== */}
         <MostViewedSection
           products={mostViewed}
           isLoading={landing.mostViewed.isLoading}
@@ -619,9 +619,9 @@ export function HomePageClient() {
           onQuickView={setQuickViewProduct}
         />
 
-        {/* ══════════════════════════════════════
+        {/* ======================================
             MOST PURCHASED
-        ══════════════════════════════════════ */}
+        ====================================== */}
         <MostPurchasedSection
           products={mostPurchased}
           isLoading={landing.mostPurchased.isLoading}
@@ -630,9 +630,9 @@ export function HomePageClient() {
           onQuickView={setQuickViewProduct}
         />
 
-        {/* ══════════════════════════════════════
+        {/* ======================================
             TRENDING PRODUCTS
-        ══════════════════════════════════════ */}
+        ====================================== */}
         <section id="trending" className="bg-slate-50 dark:bg-slate-900/30">
           <div className="max-w-7xl mx-auto px-4 md:px-6 py-16 space-y-8">
             <SectionHeader
@@ -662,9 +662,9 @@ export function HomePageClient() {
           </div>
         </section>
 
-        {/* ══════════════════════════════════════
+        {/* ======================================
             SERVICE FEATURES
-        ══════════════════════════════════════ */}
+        ====================================== */}
         <section>
           <div className="max-w-7xl mx-auto px-4 md:px-6 py-16 space-y-8">
             <motion.div {...fadeUp} className="text-center">
@@ -693,9 +693,9 @@ export function HomePageClient() {
           </div>
         </section>
 
-        {/* ══════════════════════════════════════
+        {/* ======================================
             TESTIMONIALS
-        ══════════════════════════════════════ */}
+        ====================================== */}
         <section id="testimonials" className="bg-slate-50 dark:bg-slate-900/30">
           <div className="max-w-7xl mx-auto px-4 md:px-6 py-16 space-y-8">
             <motion.div {...fadeUp} className="text-center">
@@ -729,9 +729,9 @@ export function HomePageClient() {
           </div>
         </section>
 
-        {/* ══════════════════════════════════════
+        {/* ======================================
             NEWSLETTER
-        ══════════════════════════════════════ */}
+        ====================================== */}
         <section>
           <div className="max-w-7xl mx-auto px-4 md:px-6 py-16">
             <motion.div {...fadeUp} className="max-w-xl mx-auto text-center space-y-4">
@@ -759,9 +759,9 @@ export function HomePageClient() {
         </section>
       </main>
 
-      {/* ══════════════════════════════════════
+      {/* ======================================
           FOOTER
-      ══════════════════════════════════════ */}
+      ====================================== */}
       <footer className="bg-slate-50 dark:bg-slate-900/50">
         <div className="max-w-7xl mx-auto px-4 md:px-6 py-12">
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-5">
@@ -858,9 +858,9 @@ export function HomePageClient() {
         </div>
       </footer>
 
-      {/* ══════════════════════════════════════
+      {/* ======================================
           QUICK VIEW MODAL
-      ══════════════════════════════════════ */}
+      ====================================== */}
       <QuickViewModal
         product={quickViewProduct}
         open={quickViewProduct !== null}

@@ -58,7 +58,7 @@ export function CatalogProductCard({
     await onWishlist?.(product.proId);
   };
 
-  /* ── List view ── */
+  /* -- List view -- */
   if (viewMode === "list") {
     return (
       <motion.div
@@ -152,7 +152,7 @@ export function CatalogProductCard({
     );
   }
 
-  /* ── Grid card ── */
+  /* -- Grid card -- */
   return (
     <motion.div
       initial={{ opacity: 0, y: 8 }}

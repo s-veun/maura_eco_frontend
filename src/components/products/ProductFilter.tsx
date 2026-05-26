@@ -62,9 +62,9 @@ function FilterControls({ categories, value, onChange }: { categories: CategoryD
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
         {[
-          { label: "Sort", field: "sort" as const, options: PRODUCT_SORT_OPTIONS as { label: string; value: string }[] },
-          { label: "Price", field: "price" as const, options: PRICE_FILTER_OPTIONS as { label: string; value: string }[] },
-          { label: "Availability", field: "availability" as const, options: AVAILABILITY_FILTER_OPTIONS as { label: string; value: string }[] },
+          { label: "Sort", field: "sort" as const, options: PRODUCT_SORT_OPTIONS as unknown as { label: string; value: string }[] },
+          { label: "Price", field: "price" as const, options: PRICE_FILTER_OPTIONS as unknown as { label: string; value: string }[] },
+          { label: "Availability", field: "availability" as const, options: AVAILABILITY_FILTER_OPTIONS as unknown as { label: string; value: string }[] },
         ].map(({ label, field, options }) => (
           <div key={field}>
             <p className="text-xs text-muted-foreground mb-1">{label}</p>

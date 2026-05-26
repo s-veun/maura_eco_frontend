@@ -22,7 +22,7 @@ export default function OAuthCallbackClient() {
     processed.current = true;
 
     const run = async () => {
-      // ── 1. Handle explicit OAuth error from the backend ──────────────────
+      // -- 1. Handle explicit OAuth error from the backend ------------------
       const oauthError = queryParams.get("error");
       if (oauthError) {
         const msg = queryParams.get("message") || oauthError;
@@ -32,7 +32,7 @@ export default function OAuthCallbackClient() {
         return;
       }
 
-      // ── 2. Extract tokens – backend sends ?token=... or ?accessToken=... ─
+      // -- 2. Extract tokens – backend sends ?token=... or ?accessToken=... -
       const accessToken =
         queryParams.get("token") ||        // primary – matches Spring backend
         queryParams.get("accessToken") ||  // alternative names
@@ -52,7 +52,7 @@ export default function OAuthCallbackClient() {
           return;
         }
 
-        // ── 3. No token in URL – try session recovery via refresh cookie ──
+        // -- 3. No token in URL – try session recovery via refresh cookie --
         const recovered = await refreshSession();
         if (recovered) {
           showToast({ type: "success", title: "Session restored" });
@@ -60,7 +60,7 @@ export default function OAuthCallbackClient() {
           return;
         }
 
-        // ── 4. Nothing worked ─────────────────────────────────────────────
+        // -- 4. Nothing worked ---------------------------------------------
         const msg =
           "No authentication token received from the provider. " +
           "Please try again or contact support.";

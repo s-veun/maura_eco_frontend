@@ -9,7 +9,7 @@ type GenericApiResponse = Record<string, unknown>;
 
 export const orderApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
-    // ── Checkout ────────────────────────────────────────────────────────────
+    // -- Checkout ------------------------------------------------------------
     checkout: builder.mutation<GenericApiResponse, OrderRequestDto>({
       query: (body) => ({
         url: "/orders/checkout",
@@ -19,13 +19,13 @@ export const orderApi = baseApi.injectEndpoints({
       invalidatesTags: ["Cart", "Orders"],
     }),
 
-    // ── Order History ────────────────────────────────────────────────────────
+    // -- Order History --------------------------------------------------------
     getOrderHistory: builder.query<OrderResponseDto[], number>({
       query: (userId) => `/orders/${userId}/history`,
       providesTags: ["Orders"],
     }),
 
-    // ── Order Tracking ───────────────────────────────────────────────────────
+    // -- Order Tracking -------------------------------------------------------
     trackOrder: builder.query<GenericApiResponse, number>({
       query: (orderId) => `/orders/${orderId}/tracking`,
     }),

@@ -90,7 +90,7 @@ export default function NotFoundPage() {
     (value: string) => {
       const normalized = value.trim();
       if (!normalized) {
-        showToast({ type: "warning", title: "Search", message: "Type a product keyword to search." });
+        showToast({ type: "info", title: "Search", message: "Type a product keyword to search." });
         return;
       }
       setAutoRedirectEnabled(false);

@@ -94,7 +94,7 @@ export function MostViewedSection({
         </div>
       ) : (
         <div className="grid lg:grid-cols-5 gap-4">
-          {/* ── Large featured card ────────────────────── */}
+          {/* -- Large featured card ---------------------- */}
           {featured && (
             <motion.div
               {...fadeUp}
@@ -168,7 +168,7 @@ export function MostViewedSection({
             </motion.div>
           )}
 
-          {/* ── Side cards ─────────────────────────────── */}
+          {/* -- Side cards ------------------------------- */}
           <div className="lg:col-span-2 grid sm:grid-cols-2 lg:grid-cols-1 gap-3">
             {side.map((product, i) => (
               <motion.div

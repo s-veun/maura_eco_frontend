@@ -14,7 +14,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import type { Product } from "@/lib/api";
 import { cn } from "@/lib/utils";
 
-/* ── Shared card prop type ──────────────────────────────────────────── */
+/* -- Shared card prop type -------------------------------------------- */
 interface CardProps {
   product: Product;
   onAddToCart: (id: number) => Promise<void> | void;
@@ -22,7 +22,7 @@ interface CardProps {
   onQuickView: (p: Product) => void;
 }
 
-/* ── TAB 1 TRENDING: Square card with hover overlay ────────────────── */
+/* -- TAB 1 TRENDING: Square card with hover overlay ------------------ */
 function TrendingCard({ product, onAddToCart, onWishlist, onQuickView }: CardProps) {
   const [adding, setAdding] = useState(false);
   const handleAdd = async () => {
@@ -100,7 +100,7 @@ function TrendingCard({ product, onAddToCart, onWishlist, onQuickView }: CardPro
   );
 }
 
-/* ── TAB 2 TOP RATED: Rating-badge card ─────────────────────────────── */
+/* -- TAB 2 TOP RATED: Rating-badge card ------------------------------- */
 function TopRatedCard({ product, onAddToCart, onWishlist, onQuickView }: CardProps) {
   const [adding, setAdding] = useState(false);
   const handleAdd = async () => {
@@ -191,7 +191,7 @@ function TopRatedCard({ product, onAddToCart, onWishlist, onQuickView }: CardPro
   );
 }
 
-/* ── TAB 3 MOST VIEWED: Numbered ranked list ────────────────────────── */
+/* -- TAB 3 MOST VIEWED: Numbered ranked list -------------------------- */
 function MostViewedListCard({
   product,
   rank,
@@ -264,7 +264,7 @@ function MostViewedListCard({
   );
 }
 
-/* ── TAB 4 NEW ARRIVALS: Date-tagged compact cards ──────────────────── */
+/* -- TAB 4 NEW ARRIVALS: Date-tagged compact cards -------------------- */
 function NewArrivalTabCard({ product, onAddToCart, onWishlist, onQuickView }: CardProps) {
   const [adding, setAdding] = useState(false);
   const handleAdd = async () => {
@@ -343,7 +343,7 @@ function NewArrivalTabCard({ product, onAddToCart, onWishlist, onQuickView }: Ca
   );
 }
 
-/* ── Skeleton helpers ───────────────────────────────────────────────── */
+/* -- Skeleton helpers ------------------------------------------------- */
 function GridSkeleton({ cols = 4, count = 8 }: { cols?: number; count?: number }) {
   const responsiveCols =
     cols === 3 ? "sm:grid-cols-3" :
@@ -401,7 +401,7 @@ function CompactSkeleton({ count = 6 }: { count?: number }) {
   );
 }
 
-/* ── Main component ─────────────────────────────────────────────────── */
+/* -- Main component --------------------------------------------------- */
 interface ProductTabsSectionProps {
   trending: Product[];
   topRated: Product[];
@@ -474,7 +474,7 @@ export function ProductTabsSection({
             </TabsTrigger>
           </TabsList>
 
-          {/* ── Trending ──────────────────────────────────── */}
+          {/* -- Trending ------------------------------------ */}
           <TabsContent value="trending" className="mt-5">
             {isLoading ? (
               <GridSkeleton cols={4} count={8} />
@@ -494,7 +494,7 @@ export function ProductTabsSection({
             )}
           </TabsContent>
 
-          {/* ── Top Rated ─────────────────────────────────── */}
+          {/* -- Top Rated ----------------------------------- */}
           <TabsContent value="top-rated" className="mt-5">
             {isLoading ? (
               <GridSkeleton cols={3} count={6} />
@@ -513,7 +513,7 @@ export function ProductTabsSection({
             )}
           </TabsContent>
 
-          {/* ── Most Viewed ───────────────────────────────── */}
+          {/* -- Most Viewed --------------------------------- */}
           <TabsContent value="most-viewed" className="mt-5">
             {isLoading ? (
               <ListSkeleton count={8} />
@@ -533,7 +533,7 @@ export function ProductTabsSection({
             )}
           </TabsContent>
 
-          {/* ── New Arrivals ──────────────────────────────── */}
+          {/* -- New Arrivals -------------------------------- */}
           <TabsContent value="new-arrivals" className="mt-5">
             {isLoading ? (
               <CompactSkeleton count={6} />

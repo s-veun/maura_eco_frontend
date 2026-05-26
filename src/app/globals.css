@@ -377,7 +377,7 @@ input[type="search"]::-webkit-search-cancel-button {
   outline-offset: 2px;
 }
 
-/* ─── CommerceHeader: white text on purple Ant Design selects ── */
+/* --- CommerceHeader: white text on purple Ant Design selects -- */
 .header-select .ant-select-selector {
   background: transparent !important;
   border: none !important;
@@ -392,7 +392,7 @@ input[type="search"]::-webkit-search-cancel-button {
   color: rgba(255, 255, 255, 0.75) !important;
 }
 
-/* ─── Slim header selects (Language / Currency) ─────────────── */
+/* --- Slim header selects (Language / Currency) --------------- */
 .header-slim-select .ant-select-selector {
   background: transparent !important;
   border: none !important;
@@ -414,7 +414,7 @@ input[type="search"]::-webkit-search-cancel-button {
   display: none !important;
 }
 
-/* ─── Header search bar ─────────────────────────────────────── */
+/* --- Header search bar --------------------------------------- */
 .header-search-input .ant-input-affix-wrapper {
   border-radius: 10px !important;
   border: 1.5px solid rgba(255, 255, 255, 0.30) !important;
@@ -452,13 +452,13 @@ input[type="search"]::-webkit-search-cancel-button {
   box-shadow: 0 8px 32px rgba(115, 86, 194, 0.18) !important;
 }
 
-/* ─── Header nav link hover ─────────────────────────────────── */
+/* --- Header nav link hover ----------------------------------- */
 .header-nav-link:hover {
   background: rgba(255, 255, 255, 0.2) !important;
   color: #fff !important;
 }
 
-/* ─── Hero Carousel Dots ─────────────────────────────────────── */
+/* --- Hero Carousel Dots --------------------------------------- */
 .hero-carousel-dots li button {
   background: rgba(255, 255, 255, 0.5) !important;
   border-radius: 4px !important;
@@ -470,7 +470,7 @@ input[type="search"]::-webkit-search-cancel-button {
   width: 32px !important;
 }
 
-/* ─── Marketplace horizontal scroll ─────────────────────────── */
+/* --- Marketplace horizontal scroll --------------------------- */
 .marketplace-scroll::-webkit-scrollbar {
   height: 4px;
 }
@@ -486,7 +486,7 @@ input[type="search"]::-webkit-search-cancel-button {
   background: #7356c2;
 }
 
-/* ─── Category sidebar menu ──────────────────────────────────── */
+/* --- Category sidebar menu ------------------------------------ */
 .ant-menu-inline .ant-menu-item {
   border-radius: 8px !important;
   margin: 2px 6px !important;
@@ -497,7 +497,7 @@ input[type="search"]::-webkit-search-cancel-button {
   color: #7356c2 !important;
 }
 
-/* ─── Ant Design Tab bar custom ─────────────────────────────── */
+/* --- Ant Design Tab bar custom ------------------------------- */
 .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
   color: #7356c2 !important;
 }
@@ -505,7 +505,7 @@ input[type="search"]::-webkit-search-cancel-button {
   background: #7356c2 !important;
 }
 
-/* ─── Card product hover ─────────────────────────────────────── */
+/* --- Card product hover --------------------------------------- */
 .marketplace-product-card {
   transition: transform 0.22s ease, box-shadow 0.22s ease !important;
 }
@@ -514,7 +514,7 @@ input[type="search"]::-webkit-search-cancel-button {
   box-shadow: 0 10px 32px rgba(115, 86, 194, 0.18) !important;
 }
 
-/* ─── Flash sale scroll ─────────────────────────────────────── */
+/* --- Flash sale scroll --------------------------------------- */
 .flash-sale-scroll {
   scrollbar-width: thin;
   scrollbar-color: #c4b5f7 #f0ebff;
@@ -531,28 +531,28 @@ input[type="search"]::-webkit-search-cancel-button {
   border-radius: 4px;
 }
 
-/* ─── Ant Design Rate stars ─────────────────────────────────── */
+/* --- Ant Design Rate stars ----------------------------------- */
 .ant-rate-star-zero .ant-rate-star-first,
 .ant-rate-star-zero .ant-rate-star-second {
   color: #e5e7eb !important;
 }
 
-/* ─── Hero Banner Carousel Height Fix ───────────────────────── */
+/* --- Hero Banner Carousel Height Fix ------------------------- */
 .hero-carousel-dots {
   bottom: 16px !important;
 }
 
-/* ─── Flash Sale section header gradient ────────────────────── */
+/* --- Flash Sale section header gradient ---------------------- */
 .flash-sale-header {
   background: linear-gradient(135deg, #ff4d4f 0%, #ff7875 100%);
 }
 
-/* ─── Category icon row items ───────────────────────────────── */
+/* --- Category icon row items --------------------------------- */
 .category-icon-item:hover span {
   color: #7356c2 !important;
 }
 
-/* ─── Smooth section reveal ─────────────────────────────────── */
+/* --- Smooth section reveal ----------------------------------- */
 @keyframes sectionReveal {
   from {
     opacity: 0;
@@ -564,7 +564,7 @@ input[type="search"]::-webkit-search-cancel-button {
   }
 }
 
-/* ─── Product card quick view overlay ───────────────────────── */
+/* --- Product card quick view overlay ------------------------- */
 .product-quick-view-overlay {
   position: absolute;
   inset: 0;
@@ -580,19 +580,19 @@ input[type="search"]::-webkit-search-cancel-button {
   opacity: 1;
 }
 
-/* ─── Newsletter input placeholder ──────────────────────────── */
+/* --- Newsletter input placeholder ---------------------------- */
 .newsletter-input::placeholder {
   color: rgba(255, 255, 255, 0.5);
 }
 
-/* ─── Flash sale scroll (updated) ───────────────────────────── */
+/* --- Flash sale scroll (updated) ----------------------------- */
 .flash-sale-scroll {
   scrollbar-width: thin;
   scrollbar-color: #c4b5f7 #f0ebff;
   scroll-snap-type: x mandatory;
 }
 
-/* ─── Ant Design Tab custom styles ──────────────────────────── */
+/* --- Ant Design Tab custom styles ---------------------------- */
 .ant-tabs-tab {
   padding: 8px 14px !important;
   border-radius: 8px 8px 0 0 !important;
@@ -614,7 +614,7 @@ input[type="search"]::-webkit-search-cancel-button {
   border-radius: 3px 3px 0 0 !important;
 }
 
-/* ─── Promo banner hover ─────────────────────────────────────── */
+/* --- Promo banner hover --------------------------------------- */
 @keyframes badgePulse {
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.06); }
@@ -624,25 +624,25 @@ input[type="search"]::-webkit-search-cancel-button {
   animation: badgePulse 2s ease-in-out infinite;
 }
 
-/* ─── Card consistent white background ──────────────────────── */
+/* --- Card consistent white background ------------------------ */
 .marketplace-section-card {
   background: #fff;
   border-radius: 18px;
   box-shadow: 0 2px 18px rgba(115, 86, 194, 0.08);
 }
 
-/* ─── Placeholder color for newsletter ──────────────────────── */
+/* --- Placeholder color for newsletter ------------------------ */
 input[type="email"]::placeholder {
   color: rgba(255, 255, 255, 0.5);
 }
 
-/* ─── Better Ant Design Skeleton ────────────────────────────── */
+/* --- Better Ant Design Skeleton ------------------------------ */
 .ant-skeleton-image {
   border-radius: 14px !important;
   width: 100% !important;
 }
 
-/* ─── Side banner min height fix ────────────────────────────── */
+/* --- Side banner min height fix ------------------------------ */
 @media (max-width: 991px) {
   .hero-side-banners {
     display: grid;

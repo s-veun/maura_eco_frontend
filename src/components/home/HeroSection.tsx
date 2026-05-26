@@ -8,7 +8,7 @@ import { ArrowRight } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
 import type { HomeBanner } from "@/types/homepage";
 
-/* ─── Fallback slider data ───────────────────────────────── */
+/* --- Fallback slider data --------------------------------- */
 const FALLBACK_SLIDES: HomeBanner[] = [
   {
     id: "f1",
@@ -58,7 +58,7 @@ const ACCENT_COLORS: Record<string, string> = {
   "Limited Offer": "#E57035",
 };
 
-/* ─── Static promo banners ───────────────────────────────── */
+/* --- Static promo banners --------------------------------- */
 const PROMO_BANNERS = [
   {
     discount: "20% Off",
@@ -78,7 +78,7 @@ const PROMO_BANNERS = [
   },
 ];
 
-/* ─── Slide animation ────────────────────────────────────── */
+/* --- Slide animation -------------------------------------- */
 const textVariants = {
   enter: { opacity: 0, x: 32 },
   center: { opacity: 1, x: 0 },
@@ -136,7 +136,7 @@ export default function HeroSection({ banners, loading }: HeroSectionProps) {
     <section className="mx-auto max-w-7xl px-4 py-8 md:px-6">
       <div className="grid gap-4 lg:grid-cols-[3fr_2fr]">
 
-        {/* ── Left: Hero Slider ─────────────────────────────── */}
+        {/* -- Left: Hero Slider ------------------------------- */}
         <div
           className="relative overflow-hidden rounded-2xl"
           style={{ backgroundColor: bgColor, minHeight: 400, transition: "background-color 0.6s ease" }}
@@ -209,7 +209,7 @@ export default function HeroSection({ banners, loading }: HeroSectionProps) {
           </div>
         </div>
 
-        {/* ── Right: Promo Banners ──────────────────────────── */}
+        {/* -- Right: Promo Banners ---------------------------- */}
         <div className="grid grid-rows-2 gap-4">
           {PROMO_BANNERS.map((banner) => (
             <Link

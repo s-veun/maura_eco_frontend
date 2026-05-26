@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { LayoutGrid } from "@/components/aceternity/layout-grid";
 import { Spotlight } from "@/components/aceternity/spotlight";
 
-/* ── Card content overlay (shown when a card is expanded) ─────────────── */
+/* -- Card content overlay (shown when a card is expanded) --------------- */
 function GridCardContent({
   title,
   subtitle,
@@ -25,7 +25,7 @@ function GridCardContent({
   );
 }
 
-/* ── Static card data ─────────────────────────────────────────────────── */
+/* -- Static card data --------------------------------------------------- */
 const heroCards = [
   {
     id: 1,
@@ -81,7 +81,7 @@ const heroCards = [
   },
 ];
 
-/* ── Hero section ─────────────────────────────────────────────────────── */
+/* -- Hero section ------------------------------------------------------- */
 export function HeroLayoutGrid() {
   return (
     <section className="relative overflow-hidden bg-slate-950">
@@ -95,7 +95,7 @@ export function HeroLayoutGrid() {
       </div>
 
       <div className="relative">
-        {/* ─── Aceternity Layout Grid ───────────────────────────── */}
+        {/* --- Aceternity Layout Grid ----------------------------- */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}

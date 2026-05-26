@@ -117,7 +117,7 @@ export default function Header() {
         : "bg-[#E49917] dark:bg-slate-950/96"
     )}>
 
-      {/* ── Promo announcement bar ── */}
+      {/* -- Promo announcement bar -- */}
       <AnimatePresence>
         {promoVisible && (
           <motion.div
@@ -157,13 +157,13 @@ export default function Header() {
         )}
       </AnimatePresence>
 
-      {/* ══════════════════════════════════════════════
+      {/* ==============================================
           ROW 1 — Logo · Search · Actions
-      ══════════════════════════════════════════════ */}
+      ============================================== */}
       <div className="bg-transparent">
         <div className="mx-auto flex h-18 max-w-7xl items-center gap-5 px-4 sm:px-6 lg:px-8">
 
-          {/* ── Logo ── */}
+          {/* -- Logo -- */}
           <Link href="/" className="group flex shrink-0 items-center gap-2.5">
             <motion.div
               whileHover={{ scale: 1.05, rotate: -3 }}
@@ -177,7 +177,7 @@ export default function Header() {
             </div>
           </Link>
 
-          {/* ── Search bar ── */}
+          {/* -- Search bar -- */}
           <motion.form
             onSubmit={handleSearch}
             animate={searchFocused ? { scale: 1.01 } : { scale: 1 }}
@@ -237,7 +237,7 @@ export default function Header() {
             </button>
           </motion.form>
 
-          {/* ── Right actions ── */}
+          {/* -- Right actions -- */}
           <div className="ml-auto flex items-center gap-1 lg:ml-0">
 
             {/* Wishlist */}
@@ -341,9 +341,9 @@ export default function Header() {
         </div>
       </div>
 
-      {/* ══════════════════════════════════════════════
+      {/* ==============================================
           ROW 2 — Browse Categories · Nav links · Support
-      ══════════════════════════════════════════════ */}
+      ============================================== */}
       <div className="hidden lg:block">
         <div className="mx-auto flex h-12 max-w-7xl items-center gap-0 px-4 sm:px-6 lg:px-8">
           {/* Nav links */}

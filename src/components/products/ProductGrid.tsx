@@ -5,12 +5,20 @@ import ProductCard from "@/components/products/ProductCard";
 
 type ProductGridProps = {
   products: Product[];
+  wishedIds?: Set<number>;
   onAddToCart?: (id: number) => void | Promise<void>;
   onAddToWishlist?: (id: number) => void;
+  onToggleWishlist?: (id: number) => Promise<void>;
   onQuickView?: (product: Product) => void;
 };
 
-export function ProductGrid({ products, onAddToCart, onAddToWishlist, onQuickView }: ProductGridProps) {
+export function ProductGrid({ products, wishedIds, onAddToCart, onAddToWishlist, onToggleWishlist, onQuickView }: ProductGridProps) {
+  const handleAddToCart = async (id: number) => { await onAddToCart?.(id); };
+  const handleToggleWishlist = async (id: number) => {
+    if (onToggleWishlist) await onToggleWishlist(id);
+    else onAddToWishlist?.(id);
+  };
+
   if (!products.length) {
     return (
       <div className="text-center py-16">
@@ -26,9 +34,10 @@ export function ProductGrid({ products, onAddToCart, onAddToWishlist, onQuickVie
         <ProductCard
           key={product.proId}
           product={product}
-          onAddToCart={onAddToCart}
-          onAddToWishlist={onAddToWishlist}
-          onQuickView={onQuickView}
+          wished={wishedIds?.has(product.proId) ?? false}
+          onAddToCart={handleAddToCart}
+          onToggleWishlist={handleToggleWishlist}
+          onQuickView={onQuickView ?? (() => {})}
         />
       ))}
     </div>

@@ -14,9 +14,13 @@ function chunkArray<T>(arr: T[], size: number): T[][] {
 type ProductCarouselProps = {
   title?: string;
   products: Product[];
+  wishedIds?: Set<number>;
+  onAddToCart?: (id: number) => Promise<void>;
+  onToggleWishlist?: (id: number) => Promise<void>;
+  onQuickView?: (product: Product) => void;
 };
 
-export function ProductCarousel({ title, products }: ProductCarouselProps) {
+export function ProductCarousel({ title, products, wishedIds, onAddToCart, onToggleWishlist, onQuickView }: ProductCarouselProps) {
   const slides = chunkArray(products, CHUNK);
   const [current, setCurrent] = useState(0);
   const prev = () => setCurrent((p) => (p === 0 ? slides.length - 1 : p - 1));
@@ -42,7 +46,14 @@ export function ProductCarousel({ title, products }: ProductCarouselProps) {
       <div className="overflow-hidden">
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3.5">
           {slides[current]?.map((product) => (
-            <ProductCard key={product.proId} product={product} />
+            <ProductCard
+              key={product.proId}
+              product={product}
+              wished={wishedIds?.has(product.proId) ?? false}
+              onAddToCart={onAddToCart ?? (async () => {})}
+              onToggleWishlist={onToggleWishlist ?? (async () => {})}
+              onQuickView={onQuickView ?? (() => {})}
+            />
           ))}
         </div>
       </div>

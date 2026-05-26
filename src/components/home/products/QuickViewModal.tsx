@@ -52,7 +52,7 @@ export function QuickViewModal({
         <DialogTitle className="sr-only">{product.proName} — Quick View</DialogTitle>
 
         <div className="grid md:grid-cols-2 min-h-80">
-          {/* ── Image panel ─────────────────────────────── */}
+          {/* -- Image panel ------------------------------- */}
           <div className="relative bg-slate-100 dark:bg-slate-800">
             {product.imageUrl ? (
               // eslint-disable-next-line @next/next/no-img-element
@@ -73,7 +73,7 @@ export function QuickViewModal({
             )}
           </div>
 
-          {/* ── Info panel ──────────────────────────────── */}
+          {/* -- Info panel -------------------------------- */}
           <div className="p-5 flex flex-col gap-4 overflow-y-auto max-h-[90vh]">
             {/* Close */}
             <button

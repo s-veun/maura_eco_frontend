@@ -141,7 +141,7 @@ const MainHeader: React.FC<MainHeaderProps> = ({
 
   return (
     <div className="relative bg-[#5a3ea8] text-white">
-      {/* ─── Primary nav row (80 px) ─── */}
+      {/* --- Primary nav row (80 px) --- */}
       <div className="mx-auto flex h-20 max-w-7xl items-center gap-4 px-4 md:px-6 lg:px-8">
 
         {/* Mobile hamburger */}
@@ -158,7 +158,7 @@ const MainHeader: React.FC<MainHeaderProps> = ({
           )}
         </button>
 
-        {/* ── Logo + tagline ── */}
+        {/* -- Logo + tagline -- */}
         <Link href="/" className="flex shrink-0 items-center gap-2.5">
           <span className="flex size-10 items-center justify-center rounded-xl bg-white/15 shadow-sm ring-1 ring-white/25">
             <Sofa className="size-5 text-white" />
@@ -173,7 +173,7 @@ const MainHeader: React.FC<MainHeaderProps> = ({
           </span>
         </Link>
         
-        {/* ── Center navigation (desktop) ── */}
+        {/* -- Center navigation (desktop) -- */}
         <nav className="ml-2 hidden flex-1 items-center justify-center gap-1 lg:flex">
           {/* Categories — mega menu trigger */}
           <button
@@ -204,7 +204,7 @@ const MainHeader: React.FC<MainHeaderProps> = ({
           ))}
         </nav>
 
-        {/* ── Right actions ── */}
+        {/* -- Right actions -- */}
         <div className="ml-auto flex items-center gap-2 lg:ml-0">
 
           {/* Search bar — desktop */}
@@ -370,7 +370,7 @@ const MainHeader: React.FC<MainHeaderProps> = ({
         </div>
       </div>
 
-      {/* ─── Mega Menu (absolutely positioned below nav row) ─── */}
+      {/* --- Mega Menu (absolutely positioned below nav row) --- */}
       <MegaMenu
         isOpen={megaMenuOpen}
         categories={categories}

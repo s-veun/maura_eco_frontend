@@ -32,7 +32,7 @@ export function useCart() {
 
   const userId: number | undefined = user?.id as number | undefined;
 
-  // ── Queries ─────────────────────────────────────────────────────────────────
+  // -- Queries -----------------------------------------------------------------
   const {
     data: cart,
     isLoading: isCartLoading,
@@ -40,13 +40,13 @@ export function useCart() {
     refetch,
   } = useGetCartQuery(userId ?? skipToken);
 
-  // ── Mutations ────────────────────────────────────────────────────────────────
+  // -- Mutations ----------------------------------------------------------------
   const [addToCartMutation, { isLoading: isAdding }] = useAddToCartMutation();
   const [updateQuantityMutation, { isLoading: isUpdating }] = useUpdateCartQuantityMutation();
   const [removeItemMutation, { isLoading: isRemoving }] = useRemoveFromCartMutation();
   const [clearCartMutation, { isLoading: isClearing }] = useClearCartMutation();
 
-  // ── Auth guard ───────────────────────────────────────────────────────────────
+  // -- Auth guard ---------------------------------------------------------------
   const requireAuth = useCallback(
     (redirectTo = pathname || "/cart"): boolean => {
       if (!isAuthenticated || !userId) {
@@ -63,7 +63,7 @@ export function useCart() {
     [isAuthenticated, pathname, userId, router, showToast],
   );
 
-  // ── Error handler ────────────────────────────────────────────────────────────
+  // -- Error handler ------------------------------------------------------------
   const handleCartError = useCallback(
     (err: unknown) => {
       const status =
@@ -106,7 +106,7 @@ export function useCart() {
     [pathname, router, showToast],
   );
 
-  // ── addToCart ────────────────────────────────────────────────────────────────
+  // -- addToCart ----------------------------------------------------------------
   const addToCart = useCallback(
     async (productId: number, quantity = 1) => {
       if (!requireAuth()) return;
@@ -121,7 +121,7 @@ export function useCart() {
     [requireAuth, addToCartMutation, userId, showToast, handleCartError],
   );
 
-  // ── updateQuantity ────────────────────────────────────────────────────────────
+  // -- updateQuantity ------------------------------------------------------------
   const updateQuantity = useCallback(
     async (productId: number, quantity: number) => {
       if (!requireAuth()) return;
@@ -136,7 +136,7 @@ export function useCart() {
     [requireAuth, updateQuantityMutation, userId, handleCartError],
   );
 
-  // ── removeItem ────────────────────────────────────────────────────────────────
+  // -- removeItem ----------------------------------------------------------------
   const removeItem = useCallback(
     async (productId: number) => {
       if (!requireAuth()) return;
@@ -151,7 +151,7 @@ export function useCart() {
     [requireAuth, removeItemMutation, userId, showToast, handleCartError],
   );
 
-  // ── clearCart ─────────────────────────────────────────────────────────────────
+  // -- clearCart -----------------------------------------------------------------
   const clearCart = useCallback(async () => {
     if (!requireAuth()) return;
     try {
@@ -163,7 +163,7 @@ export function useCart() {
     }
   }, [requireAuth, clearCartMutation, userId, showToast, handleCartError]);
 
-  // ── Derived state ─────────────────────────────────────────────────────────────
+  // -- Derived state -------------------------------------------------------------
   const cartItemCount = cart?.items?.reduce((sum, item) => sum + item.quantity, 0) ?? 0;
   const totalPrice = cart?.totalPrice ?? 0;
   const isEmpty = !cart || !cart.items || cart.items.length === 0;

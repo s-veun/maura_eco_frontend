@@ -7,7 +7,7 @@ import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 
-/* ── Slide data ────────────────────────────────────────────────────────── */
+/* -- Slide data ---------------------------------------------------------- */
 const slides = [
   {
     id: 1,
@@ -51,7 +51,7 @@ const slides = [
   },
 ];
 
-/* ── Hero Swiper ───────────────────────────────────────────────────────── */
+/* -- Hero Swiper --------------------------------------------------------- */
 export function HeroSwiper() {
   const [activeIdx, setActiveIdx] = useState(0);
   const [slideKey, setSlideKey] = useState(0);

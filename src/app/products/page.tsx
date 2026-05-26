@@ -102,7 +102,7 @@ export default function ProductsPage() {
 
         <div className="mx-auto max-w-[1280px] px-4 py-6 md:px-6">
           <div className="flex gap-6">
-            {/* ── Sidebar (desktop) ── */}
+            {/* -- Sidebar (desktop) -- */}
             <div className="hidden w-56 shrink-0 lg:block">
               <CatalogSidebar
                 categories={categories}
@@ -112,7 +112,7 @@ export default function ProductsPage() {
               />
             </div>
 
-            {/* ── Main content ── */}
+            {/* -- Main content -- */}
             <div className="min-w-0 flex-1">
               <CatalogToolbar
                 search={search}
@@ -207,7 +207,7 @@ export default function ProductsPage() {
           </div>
         </div>
 
-        {/* ── Mobile filter drawer ── */}
+        {/* -- Mobile filter drawer -- */}
         <AnimatePresence>
           {mobileFilterOpen && (
             <>

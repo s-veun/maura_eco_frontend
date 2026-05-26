@@ -116,7 +116,7 @@ export default function MegaMenu({
             <div className="overflow-hidden rounded-2xl border border-slate-200/60 bg-white shadow-[0_20px_60px_rgba(15,23,42,0.18)] backdrop-blur-xl">
               <div className="flex divide-x divide-slate-100">
 
-                {/* ── LEFT: Category list ── */}
+                {/* -- LEFT: Category list -- */}
                 <div className="flex-1 p-5">
                   <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">
                     Browse Categories
@@ -187,7 +187,7 @@ export default function MegaMenu({
                   </div>
                 </div>
 
-                {/* ── RIGHT: Featured panel ── */}
+                {/* -- RIGHT: Featured panel -- */}
                 <div className="flex w-64 shrink-0 flex-col gap-3 p-5">
                   <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">
                     Featured

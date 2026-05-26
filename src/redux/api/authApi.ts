@@ -24,7 +24,7 @@ const AUTH_RESET_PASSWORD_ENDPOINT = process.env.NEXT_PUBLIC_AUTH_RESET_PASSWORD
 export const authApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
 
-    // ── Auth ────────────────────────────────────────────────────────────────
+    // -- Auth ----------------------------------------------------------------
     login: builder.mutation<LoginResponse, { username: string; password: string }>({
       query: (credentials) => ({
         url: "/login",
@@ -113,7 +113,7 @@ export const authApi = baseApi.injectEndpoints({
       invalidatesTags: ["Profile"],
     }),
 
-    // ── Addresses ───────────────────────────────────────────────────────────
+    // -- Addresses -----------------------------------------------------------
     // GET /api/v1/addresses/user/{userId}
     getAddresses: builder.query<GenericApiResponse[], number>({
       query: (userId) => `/addresses/user/${userId}`,
