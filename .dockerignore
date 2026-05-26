@@ -1,0 +1,16 @@
+node_modules
+.next
+.turbo
+out
+dist
+coverage
+.vscode
+.DS_Store
+*.log
+.env
+.env.*
+.git
+.gitignore
+.env.local
+README.md
+

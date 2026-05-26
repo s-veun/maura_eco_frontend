@@ -1,0 +1,135 @@
+.pageShell {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.fadeIn {
+  animation: fadeInUp 700ms ease both;
+}
+
+.hero404 {
+  margin: 0;
+  line-height: 0.9;
+  letter-spacing: -2px;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: pulse 2.6s ease-in-out infinite;
+}
+
+.heroImageWrap {
+  animation: floating 3.6s ease-in-out infinite;
+}
+
+.shape {
+  position: absolute;
+  border-radius: 999px;
+  opacity: 0.22;
+  filter: blur(0.5px);
+}
+
+.shapeOne {
+  width: 180px;
+  height: 180px;
+  top: -52px;
+  right: -52px;
+  background: linear-gradient(135deg, #b9a3ff, #6f52de);
+}
+
+.shapeTwo {
+  width: 140px;
+  height: 140px;
+  bottom: 16%;
+  left: -32px;
+  background: linear-gradient(135deg, #d8cbff, #9f8ae8);
+}
+
+.shapeThree {
+  width: 112px;
+  height: 112px;
+  top: 42%;
+  right: 8%;
+  background: linear-gradient(135deg, #f2edff, #cab8ff);
+}
+
+.cardHover {
+  transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+.cardHover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(42, 14, 91, 0.15);
+}
+
+.primaryAction {
+  background: linear-gradient(135deg, #5a3ea8 0%, #7a63db 100%);
+  border: none;
+  box-shadow: 0 10px 24px rgba(90, 62, 168, 0.35);
+  transition: transform 220ms ease, box-shadow 220ms ease, filter 220ms ease;
+}
+
+.primaryAction:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(90, 62, 168, 0.4);
+  filter: brightness(1.05);
+}
+
+.secondaryAction {
+  transition: transform 220ms ease, background-color 220ms ease, border-color 220ms ease;
+}
+
+.secondaryAction:hover {
+  transform: translateY(-2px);
+}
+
+/*@media (prefers-color-scheme: dark) {*/
+/*  .shape {*/
+/*    opacity: 0.17;*/
+/*  }*/
+
+/*  .cardHover:hover {*/
+/*    box-shadow: 0 16px 36px rgba(6, 5, 12, 0.6);*/
+/*  }*/
+/*}*/
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floating {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/*@keyframes pulse {*/
+/*  0% {*/
+/*    filter: drop-shadow(0 0 0 rgba(110, 82, 215, 0.22));*/
+/*  }*/
+
+/*  50% {*/
+/*    filter: drop-shadow(0 8px 20px rgba(110, 82, 215, 0.26));*/
+/*  }*/
+
+/*  100% {*/
+/*    filter: drop-shadow(0 0 0 rgba(110, 82, 215, 0.2));*/
+/*  }*/
+/*}*/
+

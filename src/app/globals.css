@@ -1,0 +1,755 @@
+@import "tailwindcss";
+@import "../styles/theme.css";
+@import "shadcn/tailwind.css";
+
+@plugin "tailwindcss-animate";
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant label (& [data-label]);
+@custom-variant focus-input-within (&:has(input:focus));
+
+@utility scrollbar-hide {
+  &::-webkit-scrollbar {
+    display: none;
+    -webkit-appearance: none;
+  }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@utility transition-inherit-all {
+  transition-property: inherit;
+  transition-duration: inherit;
+  transition-timing-function: inherit;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+  --font-mono: ui-monospace, 'SFMono-Regular', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+  --font-heading: var(--font-sans);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  /* Primary: #E49917 → oklch(0.72 0.17 70) */
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.13 0.01 60);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.13 0.01 60);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.13 0.01 60);
+  --primary: oklch(0.72 0.17 70);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0.03 70);
+  --secondary-foreground: oklch(0.25 0.06 70);
+  --muted: oklch(0.97 0.015 70);
+  --muted-foreground: oklch(0.52 0.02 70);
+  --accent: oklch(0.95 0.06 70);
+  --accent-foreground: oklch(0.72 0.17 70);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.928 0.004 70);
+  --input: oklch(0.928 0.004 70);
+  --ring: oklch(0.65 0.15 70);
+  --chart-1: oklch(0.72 0.17 70);
+  --chart-2: oklch(0.62 0.15 70);
+  --chart-3: oklch(0.55 0.12 70);
+  --chart-4: oklch(0.55 0.12 200);
+  --chart-5: oklch(0.65 0.10 30);
+  --radius: 0.75rem;
+  --sidebar: oklch(0.985 0.015 70);
+  --sidebar-foreground: oklch(0.13 0.01 60);
+  --sidebar-primary: oklch(0.72 0.17 70);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.95 0.06 70);
+  --sidebar-accent-foreground: oklch(0.72 0.17 70);
+  --sidebar-border: oklch(0.928 0.004 70);
+  --sidebar-ring: oklch(0.65 0.15 70);
+}
+
+.dark {
+  --background: oklch(0.10 0.02 270);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.13 0.025 270);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.13 0.025 270);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.80 0.14 70);
+  --primary-foreground: oklch(0.10 0.02 60);
+  --secondary: oklch(0.17 0.025 270);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.17 0.025 270);
+  --muted-foreground: oklch(0.62 0 0);
+  --accent: oklch(0.20 0.05 293);
+  --accent-foreground: oklch(0.72 0.13 293);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 8%);
+  --input: oklch(1 0 0 / 10%);
+  --ring: oklch(0.52 0.15 293);
+  --chart-1: oklch(0.62 0.16 293);
+  --chart-2: oklch(0.72 0.11 293);
+  --chart-3: oklch(0.55 0.12 200);
+  --chart-4: oklch(0.65 0.10 30);
+  --chart-5: oklch(0.58 0.15 293);
+  --sidebar: oklch(0.13 0.025 270);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.62 0.16 293);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.20 0.05 293);
+  --sidebar-accent-foreground: oklch(0.72 0.13 293);
+  --sidebar-border: oklch(1 0 0 / 8%);
+  --sidebar-ring: oklch(0.52 0.15 293);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+  }
+  html {
+    @apply font-sans scroll-smooth;
+  }
+}
+
+html,
+body {
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-variant-ligatures: contextual;
+  font-variant-ligatures: contextual;
+  -webkit-font-kerning: normal;
+  font-kerning: normal;
+}
+
+details summary::-webkit-details-marker {
+  display: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+
+.recharts-surface,
+.recharts-surface g,
+.recharts-surface path {
+  outline: none;
+}
+
+/* ============================================
+   TableEco Custom Styles — Purple Brand #5a3ea8
+   ============================================ */
+
+/* --- Brand Colors --- */
+.primary-color {
+  background-color: #5a3ea8;
+}
+
+.secondary-color {
+  background-color: #c4b5fd;
+}
+
+/* --- Buttons --- */
+.bg-btn {
+  background-color: #5a3ea8;
+}
+
+.bg-btn:hover {
+  background: linear-gradient(135deg, #4a3190 0%, #3b2570 100%);
+}
+
+/* --- Hero Gradients --- */
+.gradient-purple {
+  background: linear-gradient(135deg, #ede9fe 0%, #ddd6fe 100%);
+}
+
+.gradient-purple-deep {
+  background: linear-gradient(135deg, #2d1b69 0%, #5a3ea8 100%);
+}
+
+.gradient-violet {
+  background: linear-gradient(135deg, #7c3aed 0%, #5a3ea8 100%);
+}
+
+.gradient-lavender {
+  background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
+}
+
+/* --- Swiper --- */
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-pagination-bullet {
+  background: white;
+  opacity: 0.5;
+}
+
+.swiper-pagination-bullet-active {
+  opacity: 1;
+  background: white;
+}
+
+/* --- Countdown Timer --- */
+.countdown-timer {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+}
+
+/* --- Hover Lift Card Effect --- */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(90, 62, 168, 0.10);
+}
+
+/* --- Banner Badge Glassmorphism --- */
+.banner-badge {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* --- Product Image Zoom --- */
+.product-image-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.product-image-container img {
+  transition: transform 0.5s ease;
+}
+
+.product-image-container:hover img {
+  transform: scale(1.08) rotate(1deg);
+}
+
+/* --- Category Card --- */
+.category-card {
+  transition: all 0.3s ease;
+}
+
+.category-card:hover {
+  transform: scale(1.04);
+}
+
+/* --- Custom Scrollbar --- */
+.dropdown-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #a78bfa #f5f3ff;
+}
+
+.dropdown-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.dropdown-scroll::-webkit-scrollbar-track {
+  background: #f5f3ff;
+  border-radius: 3px;
+}
+
+.dropdown-scroll::-webkit-scrollbar-thumb {
+  background-color: #a78bfa;
+  border-radius: 3px;
+}
+
+/* --- Scrollbar Hide Utility --- */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* --- Hero Carousel --- */
+.hero-carousel {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.hero-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+/* --- Float Animation --- */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-16px); }
+}
+
+.float-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* --- Fade Animations --- */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.7s ease-out forwards;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.85s ease-out forwards;
+}
+
+/* --- Purple glow utility --- */
+.purple-glow {
+  box-shadow: 0 0 0 4px rgba(90, 62, 168, 0.15);
+}
+
+.purple-ring {
+  outline: 2px solid #5a3ea8;
+  outline-offset: 2px;
+}
+
+/* ─── CommerceHeader: white text on purple Ant Design selects ── */
+.header-select .ant-select-selector {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: #fff !important;
+}
+.header-select .ant-select-selection-item {
+  color: #fff !important;
+  font-weight: 500;
+}
+.header-select .ant-select-arrow {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+
+/* ─── Slim header selects (Language / Currency) ─────────────── */
+.header-slim-select .ant-select-selector {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  height: auto !important;
+}
+.header-slim-select .ant-select-selection-item {
+  color: rgba(255, 255, 255, 0.90) !important;
+  font-size: 12.5px !important;
+  font-weight: 600 !important;
+  padding-right: 0 !important;
+  line-height: 22px !important;
+}
+.header-slim-select.ant-select-focused .ant-select-selector {
+  box-shadow: none !important;
+}
+.header-slim-select .ant-select-arrow {
+  display: none !important;
+}
+
+/* ─── Header search bar ─────────────────────────────────────── */
+.header-search-input .ant-input-affix-wrapper {
+  border-radius: 10px !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.30) !important;
+  background: rgba(255, 255, 255, 0.96) !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.10) !important;
+  height: 42px !important;
+  transition: all 0.2s ease !important;
+}
+.header-search-input .ant-input-search-button {
+  border-radius: 0 10px 10px 0 !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.30) !important;
+  border-left: none !important;
+  background: rgba(255, 255, 255, 0.96) !important;
+  height: 42px !important;
+}
+.header-search-focused .ant-input-affix-wrapper {
+  border: 1.5px solid #7356c2 !important;
+  background: #fff !important;
+  box-shadow: 0 0 0 3px rgba(115, 86, 194, 0.18) !important;
+}
+.header-search-focused .ant-input-search-button {
+  border: 1.5px solid #7356c2 !important;
+  border-left: none !important;
+}
+.header-search-input .ant-input-search .ant-input,
+.header-search-focused .ant-input-search .ant-input {
+  background: transparent !important;
+  font-size: 13.5px !important;
+}
+.header-search-popup .ant-select-item-group {
+  padding: 6px 12px 2px !important;
+}
+.header-search-popup {
+  border-radius: 12px !important;
+  box-shadow: 0 8px 32px rgba(115, 86, 194, 0.18) !important;
+}
+
+/* ─── Header nav link hover ─────────────────────────────────── */
+.header-nav-link:hover {
+  background: rgba(255, 255, 255, 0.2) !important;
+  color: #fff !important;
+}
+
+/* ─── Hero Carousel Dots ─────────────────────────────────────── */
+.hero-carousel-dots li button {
+  background: rgba(255, 255, 255, 0.5) !important;
+  border-radius: 4px !important;
+  width: 20px !important;
+  height: 4px !important;
+}
+.hero-carousel-dots li.slick-active button {
+  background: #fff !important;
+  width: 32px !important;
+}
+
+/* ─── Marketplace horizontal scroll ─────────────────────────── */
+.marketplace-scroll::-webkit-scrollbar {
+  height: 4px;
+}
+.marketplace-scroll::-webkit-scrollbar-track {
+  background: #f0ebff;
+  border-radius: 4px;
+}
+.marketplace-scroll::-webkit-scrollbar-thumb {
+  background: #c4b5f7;
+  border-radius: 4px;
+}
+.marketplace-scroll::-webkit-scrollbar-thumb:hover {
+  background: #7356c2;
+}
+
+/* ─── Category sidebar menu ──────────────────────────────────── */
+.ant-menu-inline .ant-menu-item {
+  border-radius: 8px !important;
+  margin: 2px 6px !important;
+  width: calc(100% - 12px) !important;
+}
+.ant-menu-inline .ant-menu-item-selected {
+  background: rgba(115, 86, 194, 0.1) !important;
+  color: #7356c2 !important;
+}
+
+/* ─── Ant Design Tab bar custom ─────────────────────────────── */
+.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: #7356c2 !important;
+}
+.ant-tabs-ink-bar {
+  background: #7356c2 !important;
+}
+
+/* ─── Card product hover ─────────────────────────────────────── */
+.marketplace-product-card {
+  transition: transform 0.22s ease, box-shadow 0.22s ease !important;
+}
+.marketplace-product-card:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 10px 32px rgba(115, 86, 194, 0.18) !important;
+}
+
+/* ─── Flash sale scroll ─────────────────────────────────────── */
+.flash-sale-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #c4b5f7 #f0ebff;
+}
+.flash-sale-scroll::-webkit-scrollbar {
+  height: 4px;
+}
+.flash-sale-scroll::-webkit-scrollbar-track {
+  background: #f0ebff;
+  border-radius: 4px;
+}
+.flash-sale-scroll::-webkit-scrollbar-thumb {
+  background: #c4b5f7;
+  border-radius: 4px;
+}
+
+/* ─── Ant Design Rate stars ─────────────────────────────────── */
+.ant-rate-star-zero .ant-rate-star-first,
+.ant-rate-star-zero .ant-rate-star-second {
+  color: #e5e7eb !important;
+}
+
+/* ─── Hero Banner Carousel Height Fix ───────────────────────── */
+.hero-carousel-dots {
+  bottom: 16px !important;
+}
+
+/* ─── Flash Sale section header gradient ────────────────────── */
+.flash-sale-header {
+  background: linear-gradient(135deg, #ff4d4f 0%, #ff7875 100%);
+}
+
+/* ─── Category icon row items ───────────────────────────────── */
+.category-icon-item:hover span {
+  color: #7356c2 !important;
+}
+
+/* ─── Smooth section reveal ─────────────────────────────────── */
+@keyframes sectionReveal {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ─── Product card quick view overlay ───────────────────────── */
+.product-quick-view-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.22s ease;
+}
+
+.marketplace-product-card:hover .product-quick-view-overlay {
+  opacity: 1;
+}
+
+/* ─── Newsletter input placeholder ──────────────────────────── */
+.newsletter-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* ─── Flash sale scroll (updated) ───────────────────────────── */
+.flash-sale-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #c4b5f7 #f0ebff;
+  scroll-snap-type: x mandatory;
+}
+
+/* ─── Ant Design Tab custom styles ──────────────────────────── */
+.ant-tabs-tab {
+  padding: 8px 14px !important;
+  border-radius: 8px 8px 0 0 !important;
+  transition: background 0.18s ease !important;
+}
+.ant-tabs-tab:hover {
+  background: rgba(115, 86, 194, 0.05) !important;
+}
+.ant-tabs-tab.ant-tabs-tab-active {
+  background: rgba(115, 86, 194, 0.06) !important;
+}
+.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: #7356c2 !important;
+  font-weight: 700 !important;
+}
+.ant-tabs-ink-bar {
+  background: linear-gradient(90deg, #7356c2, #a78bfa) !important;
+  height: 3px !important;
+  border-radius: 3px 3px 0 0 !important;
+}
+
+/* ─── Promo banner hover ─────────────────────────────────────── */
+@keyframes badgePulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+}
+
+.discount-badge-pulse {
+  animation: badgePulse 2s ease-in-out infinite;
+}
+
+/* ─── Card consistent white background ──────────────────────── */
+.marketplace-section-card {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 2px 18px rgba(115, 86, 194, 0.08);
+}
+
+/* ─── Placeholder color for newsletter ──────────────────────── */
+input[type="email"]::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* ─── Better Ant Design Skeleton ────────────────────────────── */
+.ant-skeleton-image {
+  border-radius: 14px !important;
+  width: 100% !important;
+}
+
+/* ─── Side banner min height fix ────────────────────────────── */
+@media (max-width: 991px) {
+  .hero-side-banners {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+}
+
+/* ============================================================
+   Aceternity UI — Animations & Utilities
+   ============================================================ */
+
+/* --- Spotlight --- */
+@keyframes spotlight {
+  0% { opacity: 0; transform: translate(-72%, -62%) scale(0.5); }
+  100% { opacity: 1; transform: translate(-50%, -40%) scale(1); }
+}
+
+.animate-spotlight {
+  animation: spotlight 2s ease 0.75s 1 forwards;
+}
+
+/* --- Infinite scroll (InfiniteMovingCards) --- */
+@keyframes scroll {
+  to { transform: translate(calc(-50% - 0.5rem)); }
+}
+
+.animate-scroll {
+  animation: scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite;
+}
+
+/* --- Meteor effect --- */
+@keyframes meteor-effect {
+  0% { transform: rotate(215deg) translateX(0); opacity: 1; }
+  70% { opacity: 1; }
+  100% { transform: rotate(215deg) translateX(-500px); opacity: 0; }
+}
+
+.animate-meteor-effect {
+  animation: meteor-effect linear infinite;
+}
+
+/* --- Shimmer button --- */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s linear infinite;
+  background: linear-gradient(
+    110deg,
+    #000103 45%,
+    #1e2631 55%,
+    #000103
+  );
+  background-size: 200% 100%;
+}
+
+/* --- Moving border --- */
+@keyframes border-beam {
+  100% { offset-distance: 100%; }
+}
+
+/* --- Background boxes --- */
+@keyframes pulse-bg {
+  0%, 100% { opacity: 0.05; }
+  50% { opacity: 0.1; }
+}
+
+/* --- Aceternity dot pattern backgrounds --- */
+.bg-dot-thick-neutral-300 {
+  background-image: radial-gradient(circle, #d4d4d4 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+.bg-dot-thick-neutral-800 {
+  background-image: radial-gradient(circle, #262626 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+.bg-grid-white\/\[0\.02\] {
+  background-image: linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.bg-grid-black\/\[0\.02\] {
+  background-image: linear-gradient(to right, rgba(0,0,0,0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0,0,0,0.02) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* --- Aceternity gradient variables --- */
+:root {
+  --black: #000000;
+  --white: #ffffff;
+  --slate-800: #1e293b;
+  --slate-900: #0f172a;
+  --neutral-900: #171717;
+  --cyan-500: #06b6d4;
+  --emerald-500: #10b981;
+  --pink-500: #ec4899;
+  --indigo-500: #6366f1;
+  --orange-500: #f97316;
+  --yellow-500: #eab308;
+  --sky-500: #0ea5e9;
+}
+
+
