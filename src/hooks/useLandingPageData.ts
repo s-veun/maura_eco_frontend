@@ -34,6 +34,11 @@ export function useLandingPageData() {
     queryFn: landingService.getMostPurchased,
   });
 
+  const recommendedProducts = useQuery({
+    queryKey: ["landing", "recommended-products"],
+    queryFn: landingService.getRecommendedProducts,
+  });
+
   const categories = useQuery({
     queryKey: ["landing", "categories"],
     queryFn: landingService.getCategories,
@@ -46,6 +51,7 @@ export function useLandingPageData() {
     topRated,
     mostViewed,
     mostPurchased,
+    recommendedProducts,
     categories,
   };
 }

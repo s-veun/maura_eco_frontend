@@ -1,6 +1,6 @@
 import type { Product } from "@/lib/api";
-import { homeApiClient } from "@/services/home/apiClient";
 import categoryService from "@/services/home/categoryService";
+import productService from "@/services/product.service";
 import type { LandingCategory } from "@/types/landing";
 
 function getSafeRating(value?: number) {
@@ -24,15 +24,13 @@ function normalizeProduct(product: Product): Product {
 
 export const landingService = {
   async getFeaturedProducts(): Promise<Product[]> {
-    const products = await homeApiClient.getList<Product>("/products", { size: 8 }).catch(() => []);
+    const products = await productService.getProducts({ size: 8 }).catch(() => []);
     return products.slice(0, 8).map(normalizeProduct);
   },
 
   async getPopularProducts(): Promise<Product[]> {
-    const fallback = await homeApiClient.getList<Product>("/products", { size: 12 }).catch(() => []);
-    const popular = await homeApiClient
-      .getList<Product>("/products/popular/trending", { limit: 12 })
-      .catch(() => fallback);
+    const fallback = await productService.getProducts({ size: 12 }).catch(() => []);
+    const popular = await productService.getTrending(12).catch(() => fallback);
 
     return popular.slice(0, 12).map(normalizeProduct);
   },
@@ -47,9 +45,9 @@ export const landingService = {
 
 
   async getNewArrivals(): Promise<Product[]> {
-    const products = await homeApiClient
-      .getList<Product>("/products/new-arrivals", { size: 8, limit: 8 })
-      .catch(() => homeApiClient.getList<Product>("/products", { size: 8 }).catch(() => []));
+    const products = await productService
+      .getNewArrivals(30)
+      .catch(() => productService.getProducts({ size: 8 }).catch(() => []));
     return products
       .slice(0, 8)
       .sort((a, b) => Date.parse(b.createdAt || "") - Date.parse(a.createdAt || ""))
@@ -57,9 +55,9 @@ export const landingService = {
   },
 
   async getTopRated(): Promise<Product[]> {
-    const products = await homeApiClient
-      .getList<Product>("/products/popular/top-rated", { limit: 8 })
-      .catch(() => homeApiClient.getList<Product>("/products", { size: 8 }).catch(() => []));
+    const products = await productService
+      .getTopRated(8)
+      .catch(() => productService.getProducts({ size: 8 }).catch(() => []));
     return products
       .slice(0, 8)
       .sort((a, b) => (b.rating || 0) - (a.rating || 0))
@@ -67,9 +65,9 @@ export const landingService = {
   },
 
   async getMostViewed(): Promise<Product[]> {
-    const products = await homeApiClient
-      .getList<Product>("/products/popular/most-viewed", { limit: 6 })
-      .catch(() => homeApiClient.getList<Product>("/products", { size: 6 }).catch(() => []));
+    const products = await productService
+      .getMostViewed(6)
+      .catch(() => productService.getProducts({ size: 6 }).catch(() => []));
     return products
       .slice(0, 6)
       .sort((a, b) => (b.viewCount || 0) - (a.viewCount || 0))
@@ -77,13 +75,18 @@ export const landingService = {
   },
 
   async getMostPurchased(): Promise<Product[]> {
-    const products = await homeApiClient
-      .getList<Product>("/products/popular/most-purchased", { limit: 10 })
-      .catch(() => homeApiClient.getList<Product>("/products", { size: 10 }).catch(() => []));
+    const products = await productService
+      .getMostPurchased(10)
+      .catch(() => productService.getProducts({ size: 10 }).catch(() => []));
     return products
       .slice(0, 10)
       .sort((a, b) => (b.purchaseCount || 0) - (a.purchaseCount || 0))
       .map(normalizeProduct);
+  },
+
+  async getRecommendedProducts(): Promise<Product[]> {
+    const products = await productService.getRecommendations(10).catch(() => []);
+    return products.slice(0, 10).map(normalizeProduct);
   },
 };
 

@@ -1,9 +1,10 @@
+import { ENDPOINTS } from "@/lib/endpoints";
 import type { AuthenticatedRequest } from "@/services/http";
 import { requestJson } from "@/services/http";
 import type { CartResponseDto } from "@/lib/api";
 
 export async function getCart(request: AuthenticatedRequest, userId: number) {
-  return requestJson<CartResponseDto>(request, `/cart/${userId}`, {
+  return requestJson<CartResponseDto>(request, ENDPOINTS.cart.get(userId), {
     method: "GET",
   });
 }
@@ -15,7 +16,7 @@ export async function addToCart(
   const quantity = payload.quantity ?? 1;
   return requestJson<CartResponseDto>(
     request,
-    `/cart/${payload.userId}/add?productId=${payload.productId}&quantity=${quantity}`,
+    `${ENDPOINTS.cart.add(payload.userId)}?productId=${payload.productId}&quantity=${quantity}`,
     { method: "POST" },
   );
 }
@@ -26,7 +27,7 @@ export async function updateCartItem(
 ) {
   return requestJson<CartResponseDto>(
     request,
-    `/cart/${payload.userId}/update?productId=${payload.productId}&quantity=${payload.quantity}`,
+    `${ENDPOINTS.cart.update(payload.userId)}?productId=${payload.productId}&quantity=${payload.quantity}`,
     { method: "PUT" },
   );
 }
@@ -37,13 +38,13 @@ export async function removeCartItem(
 ) {
   return requestJson<CartResponseDto>(
     request,
-    `/cart/${payload.userId}/remove/${payload.productId}`,
+    ENDPOINTS.cart.remove(payload.userId, payload.productId),
     { method: "DELETE" },
   );
 }
 
 export async function clearCart(request: AuthenticatedRequest, userId: number) {
-  return requestJson<void>(request, `/cart/${userId}/clear`, {
+  return requestJson<void>(request, ENDPOINTS.cart.clear(userId), {
     method: "DELETE",
   });
 }

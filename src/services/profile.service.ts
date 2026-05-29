@@ -1,5 +1,5 @@
 import type { AuthenticatedRequest } from "@/services/http";
-import { UserApiError, requestJson } from "@/services/http";
+import { requestJson } from "@/services/http";
 import type { AuthUser } from "@/auth/types";
 
 type ProfileEnvelope = {
@@ -76,38 +76,11 @@ export async function updateProfile(
     throw new Error("Please provide at least one profile field to update.");
   }
 
-  const candidateEndpoints = ["/profile/update", "/profile", PROFILE_PATH] as const;
-  let lastError: unknown;
-  let response: ProfileEnvelope | null = null;
-
-  for (const endpoint of candidateEndpoints) {
-    try {
-      response = await requestJson<ProfileEnvelope>(request, endpoint, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(normalizedPayload),
-      });
-      break;
-    } catch (error) {
-      lastError = error;
-      if (!(error instanceof UserApiError)) {
-        throw error;
-      }
-
-      // Some deployments only expose one of these profile update routes.
-      const canTryFallback =
-        endpoint === "/profile/update" && (error.status === 404 || error.status === 405 || error.status >= 500);
-      if (!canTryFallback) {
-        throw error;
-      }
-    }
-  }
-
-  if (!response) {
-    throw (lastError instanceof Error
-      ? lastError
-      : new Error("Unable to update profile right now."));
-  }
+  const response = await requestJson<ProfileEnvelope>(request, PROFILE_PATH, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(normalizedPayload),
+  });
 
   const data = response.data || response.user || response;
   return normalizeProfilePayload(data);
@@ -121,7 +94,7 @@ export async function uploadAvatar(
   formData.append("file", file);
   return requestJson<{ profileImage?: string; imageUrl?: string; url?: string }>(
     request,
-    "/profile/avatar",
+    "/users/profile/image",
     { method: "POST", body: formData },
   );
 }
@@ -130,7 +103,7 @@ export async function changePassword(
   request: AuthenticatedRequest,
   payload: { oldPassword: string; newPassword: string },
 ) {
-  return requestJson<{ message?: string }>(request, "/profile/change-password", {
+  return requestJson<{ message?: string }>(request, "/users/profile/change-password", {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",

@@ -1,4 +1,5 @@
 import axios, { AxiosError, AxiosHeaders, type InternalAxiosRequestConfig } from "axios";
+import { assertPublicEcommerceEndpoint } from "@/lib/endpoints";
 import {
   getStoredRefreshToken,
   getStoredToken,
@@ -131,17 +132,21 @@ client.interceptors.response.use(
 );
 
 export const homeApiClient = {
-  get: async <T>(url: string, params?: Record<string, unknown>) =>
-    retryableRequest(async () => (await client.get<T>(url, { params })).data),
+  get: async <T>(url: string, params?: Record<string, unknown>) => {
+    const safeUrl = assertPublicEcommerceEndpoint(url);
+    return retryableRequest(async () => (await client.get<T>(safeUrl, { params })).data);
+  },
   getList: async <T>(url: string, params?: Record<string, unknown>) => {
-    const payload = await retryableRequest(async () => (await client.get<unknown>(url, { params })).data);
+    const safeUrl = assertPublicEcommerceEndpoint(url);
+    const payload = await retryableRequest(async () => (await client.get<unknown>(safeUrl, { params })).data);
     if (Array.isArray(payload)) return payload as T[];
     if (!payload || typeof payload !== "object") return [];
     const envelope = payload as ListEnvelope<T>;
     return envelope.data || envelope.content || envelope.items || envelope.products || [];
   },
   getEntity: async <T>(url: string, params?: Record<string, unknown>) => {
-    const payload = await retryableRequest(async () => (await client.get<unknown>(url, { params })).data);
+    const safeUrl = assertPublicEcommerceEndpoint(url);
+    const payload = await retryableRequest(async () => (await client.get<unknown>(safeUrl, { params })).data);
     if (!payload || typeof payload !== "object" || Array.isArray(payload)) {
       return payload as T;
     }

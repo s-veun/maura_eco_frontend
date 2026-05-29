@@ -1,25 +1,22 @@
 import type { Metadata } from "next";
-import HomePageClient from "@/components/home/untitled/HomePageClient";
+import HomePage from "@/app/home/page";
 
 export const metadata: Metadata = {
-  title: "TableEco | Premium Furniture Marketplace",
+  title: "TableEco | Luxury Furniture Atelier",
   description:
-    "Discover premium tables and furniture with an Untitled UI-inspired shopping experience, dynamic recommendations, and modern category browsing.",
+    "Discover an editorial luxury furniture experience with Scandinavian-inspired collections, premium materials, and spacious modern design.",
   openGraph: {
-    title: "TableEco | Premium Furniture Marketplace",
+    title: "TableEco | Luxury Furniture Atelier",
     description:
-      "Discover premium tables and furniture with an Untitled UI-inspired shopping experience.",
+      "Discover an editorial luxury furniture experience with Scandinavian-inspired collections.",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "TableEco | Premium Furniture Marketplace",
+    title: "TableEco | Luxury Furniture Atelier",
     description:
-      "Discover premium tables and furniture with an Untitled UI-inspired shopping experience.",
+      "Discover an editorial luxury furniture experience with Scandinavian-inspired collections.",
   },
 };
 
-export default function HomePage() {
-  return <HomePageClient />;
-}
-
+export default HomePage;

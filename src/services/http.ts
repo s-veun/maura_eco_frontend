@@ -1,3 +1,5 @@
+import { assertPublicEcommerceEndpoint } from "@/lib/endpoints";
+
 export type AuthenticatedRequest = (path: string, init?: RequestInit) => Promise<Response>;
 
 type ApiErrorPayload = {
@@ -5,15 +7,6 @@ type ApiErrorPayload = {
   error?: string;
   success?: boolean;
 };
-
-const FORBIDDEN_ENDPOINT_PREFIXES = ["/admin", "/api/v1/admin"];
-const FORBIDDEN_EXACT_ENDPOINTS = [
-  "/users/all",
-  "/admin/dashboard",
-  "/admin/orders",
-  "/admin/products",
-  "/admin/analytics",
-];
 
 export class UserApiError extends Error {
   status: number;
@@ -26,15 +19,7 @@ export class UserApiError extends Error {
 }
 
 function ensureUserSafeEndpoint(path: string) {
-  const normalized = path.startsWith("/") ? path : `/${path}`;
-
-  if (FORBIDDEN_ENDPOINT_PREFIXES.some((prefix) => normalized.startsWith(prefix))) {
-    throw new Error(`Blocked admin endpoint: ${normalized}`);
-  }
-
-  if (FORBIDDEN_EXACT_ENDPOINTS.includes(normalized)) {
-    throw new Error(`Blocked admin endpoint: ${normalized}`);
-  }
+  assertPublicEcommerceEndpoint(path);
 }
 
 async function readErrorMessage(response: Response) {

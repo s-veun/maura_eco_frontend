@@ -3,9 +3,9 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "TableEco | Modern Tables and Furniture",
+  title: "TableEco | Luxury Furniture",
   description:
-    "Shop premium tables and modern furniture with a clean, responsive ecommerce experience built for design-focused homes.",
+    "A premium editorial furniture ecommerce experience inspired by Scandinavian and modern interior brands.",
 };
 
 import { ReduxProvider } from "@/redux/provider";
@@ -30,7 +30,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} h-full scroll-smooth`} data-scroll-behavior="smooth" suppressHydrationWarning>
-      <body className="h-full bg-white antialiased transition-colors duration-300">
+      <body className="h-full bg-[#F8F6F2] text-[#2B2B2B] antialiased">
         <ThemeProvider>
           <ReduxProvider>
             <AppQueryProvider>

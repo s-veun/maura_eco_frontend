@@ -66,34 +66,37 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
+  --color-earth-dark: #8A7650;
+  --color-earth-green: #8E977D;
+  --color-earth-light: #ECE7D1;
+  --color-earth-mid: #DBCEA5;
 }
 
 :root {
-  /* Primary: #E49917 → oklch(0.72 0.17 70) */
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.13 0.01 60);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.13 0.01 60);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.13 0.01 60);
-  --primary: oklch(0.72 0.17 70);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0.03 70);
-  --secondary-foreground: oklch(0.25 0.06 70);
-  --muted: oklch(0.97 0.015 70);
-  --muted-foreground: oklch(0.52 0.02 70);
-  --accent: oklch(0.95 0.06 70);
-  --accent-foreground: oklch(0.72 0.17 70);
+  --background: #F8F6F2;
+  --foreground: #2B2B2B;
+  --card: #FFFFFF;
+  --card-foreground: #2B2B2B;
+  --popover: #FFFFFF;
+  --popover-foreground: #2B2B2B;
+  --primary: #8A7650;
+  --primary-foreground: #FFFFFF;
+  --secondary: #ECE7D1;
+  --secondary-foreground: #2B2B2B;
+  --muted: #F4F1EA;
+  --muted-foreground: #777777;
+  --accent: #B98B56;
+  --accent-foreground: #FFFFFF;
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.928 0.004 70);
-  --input: oklch(0.928 0.004 70);
-  --ring: oklch(0.65 0.15 70);
+  --border: #EAEAEA;
+  --input: #EAEAEA;
+  --ring: #8A7650;
   --chart-1: oklch(0.72 0.17 70);
   --chart-2: oklch(0.62 0.15 70);
   --chart-3: oklch(0.55 0.12 70);
   --chart-4: oklch(0.55 0.12 200);
   --chart-5: oklch(0.65 0.10 30);
-  --radius: 0.75rem;
+  --radius: 5px;
   --sidebar: oklch(0.985 0.015 70);
   --sidebar-foreground: oklch(0.13 0.01 60);
   --sidebar-primary: oklch(0.72 0.17 70);
@@ -148,6 +151,21 @@
   }
   html {
     @apply font-sans scroll-smooth;
+  }
+}
+
+@layer utilities {
+  .luxury-container {
+    @apply mx-auto w-full max-w-7xl px-6;
+  }
+
+  .luxury-section {
+    @apply py-[100px];
+  }
+
+  .luxury-heading {
+    font-family: var(--font-heading), serif;
+    letter-spacing: -0.02em;
   }
 }
 
@@ -751,5 +769,4 @@ input[type="email"]::placeholder {
   --yellow-500: #eab308;
   --sky-500: #0ea5e9;
 }
-
 

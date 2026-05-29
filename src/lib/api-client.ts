@@ -1,3 +1,5 @@
+import { assertPublicEcommerceEndpoint } from "@/lib/endpoints";
+
 const API_BASE_URL =
   process.env.NEXT_PUBLIC_API_BASE_URL ||
   "https://demoprojectspring-production.up.railway.app/api/v1";
@@ -13,7 +15,8 @@ function normalizePath(path: string) {
 }
 
 function buildApiUrl(path: string) {
-  return `${API_BASE_URL.replace(/\/$/, "")}${normalizePath(path)}`;
+  const safePath = assertPublicEcommerceEndpoint(normalizePath(path));
+  return `${API_BASE_URL.replace(/\/$/, "")}${safePath}`;
 }
 
 function withAuthorizationHeader(init: RequestInit | undefined, token: string) {
