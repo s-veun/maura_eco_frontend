@@ -1,10 +1,5 @@
-import StoreLayout from "@/layouts/StoreLayout";
-import MarketplaceHome from "@/components/home/MarketplaceHome";
+import PremiumFurnitureHome from "@/components/home/PremiumFurnitureHome";
 
 export default function HomePage() {
-  return (
-    <StoreLayout>
-      <MarketplaceHome />
-    </StoreLayout>
-  );
+  return <PremiumFurnitureHome />;
 }

@@ -36,6 +36,8 @@ function statsFromIndex(index: number): HeroStat[] {
 
 function mapBannerToSlide(banner: HomeBanner, index: number): HeroSlide {
   const badge = badgeFromCampaign(banner.campaignType);
+  const fallbackImage = fallbackHeroSlides[index % fallbackHeroSlides.length].imageUrl;
+  const resolvedImage = banner.imageUrl?.trim() || fallbackImage;
 
   return {
     id: banner.id,
@@ -44,7 +46,7 @@ function mapBannerToSlide(banner: HomeBanner, index: number): HeroSlide {
     description: banner.description,
     ctaLabel: banner.ctaLabel,
     ctaHref: banner.ctaHref,
-    imageUrl: banner.imageUrl || fallbackHeroSlides[index % fallbackHeroSlides.length].imageUrl,
+    imageUrl: resolvedImage,
     badge,
     tags: [badge, "Premium Furniture", banner.discountLabel || "Exclusive"],
     toneFrom: banner.toneFrom,
